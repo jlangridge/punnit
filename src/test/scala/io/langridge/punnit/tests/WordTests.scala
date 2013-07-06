@@ -6,7 +6,7 @@ import org.scalatest.matchers.ShouldMatchers
 
 import io.langridge.punnit.Word
 
-class WordSuite extends FunSuite with ShouldMatchers {
+class WordTests extends FunSuite with ShouldMatchers {
 	
 	def word(record: String) : Word = {
 		val tokenized = record.split(" ")
