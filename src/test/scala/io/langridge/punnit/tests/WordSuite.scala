@@ -45,4 +45,12 @@ class WordSuite extends FunSuite with ShouldMatchers {
 		testWord.rhymesWith(rhyming) should be === true
 	}
 
+	test ("SyllableCount should return the correct number of syllables for a word") {
+		testWord.syllableCount should be === 2
+	}
+
+	test ("Words that match syllable counts and rhyme should be substitutable") {
+		testWord.canBeSubstitutedFor(word("FISSION  F IH1 SH AH0 N")) should be === true
+	}
+
 }
