@@ -19,7 +19,7 @@ class WordSuite extends FunSuite with ShouldMatchers {
 	}
 
 	test("Last syllable should return the correct phoneme") {
-		testWord.lastSyllable should be === "OW0"
+		testWord.lastSyllable should be === List("OW0", "T")
 	}
 
 	test("Is vowel phoneme should return true for vowel sounds") {
