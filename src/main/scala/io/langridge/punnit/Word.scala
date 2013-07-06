@@ -3,7 +3,7 @@ package io.langridge.punnit
 class Word (val signifier:String, val phonemes:List[String]) {
 
 	def rhymesWith(word: Word) :Boolean = {
-		false
+		this.lastSyllable == word.lastSyllable
 	}
 
 	def lastSyllable :List[String] = {

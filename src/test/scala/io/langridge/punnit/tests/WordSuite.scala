@@ -8,25 +8,41 @@ import io.langridge.punnit.Word
 
 class WordSuite extends FunSuite with ShouldMatchers {
 	
-	val testWord = new Word("ZYGOTE", "Z AY1 G OW0 T".split(" ").toList)
+	def word(record: String) : Word = {
+		val tokenized = record.split(" ")
+		new Word(tokenized.head, tokenized.tail.toList)
+	}
+
+	val testWord = word("MISSION M IH1 SH AH0 N")
 
 	test("Assert the truth"){
 		assert(true == true)
 	}
 
 	test("Create a new word") {
-		testWord.signifier should be === "ZYGOTE"
+		testWord.signifier should be === "MISSION"
 	}
 
 	test("Last syllable should return the correct phoneme") {
-		testWord.lastSyllable should be === List("OW0", "T")
+		testWord.lastSyllable should be === List("AH0", "N")
 	}
 
 	test("Is vowel phoneme should return true for vowel sounds") {
-		testWord.isVowelSound("OW0") should be === true
+		testWord.isVowelSound("AH0") should be === true
 	}
+	
 	test("Is vowel phoneme should return false for consonant sounds") {
 		testWord.isVowelSound("T") should be === false
+	}
+
+	test("Words that do not rhyme should return false for rhymesWith") {
+		val nonRhyming = word ("ACCOMPANIED AH0 K AH1 M P AH0 N IY0 D")
+		testWord.rhymesWith(nonRhyming) should be === false
+	}
+
+	test("Words that do rhyme should return true for rhymesWith") {
+		val rhyming = word ("MODERATION M AA2 D ER0 EY1 SH AH0 N")
+		testWord.rhymesWith(rhyming) should be === true
 	}
 
 }
