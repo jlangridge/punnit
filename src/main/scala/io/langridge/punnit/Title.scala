@@ -4,7 +4,7 @@ class Title (title: String) {
 
 	def words :List[Word] = {
 		val tokenized = title.split(" ").toList
-		tokenized.flatMap(word => WordStore.find(word))
+		tokenized.map(word => WordStore.find(word).getOrElse(new Word(word, List(""))))
 	}
 
 	def canBeSubstituted(word: Word) = {
