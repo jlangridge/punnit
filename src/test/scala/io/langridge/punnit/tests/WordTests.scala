@@ -53,4 +53,8 @@ class WordTests extends FunSuite with ShouldMatchers {
 		testWord.canBeSubstitutedFor(word("FISSION  F IH1 SH AH0 N")) should be === true
 	}
 
+	test ("Vowels should return all vowel phonemes from the word") {
+		testWord.vowels should be === List("IH1", "AH0")
+	}
+
 }

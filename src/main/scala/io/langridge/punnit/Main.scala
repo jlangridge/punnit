@@ -8,7 +8,7 @@ object Main extends App {
      val records = WordStore.records
 
 
-     val testWord = WordStore.find("Stapler").get    
+     val testWord = WordStore.find("booze").get    
 
      val songTitles = Resource.fromFile("dat/NumberOnes").lines().map(s => new Title(s))
 

@@ -16,10 +16,10 @@ class TitleTests extends FunSuite with ShouldMatchers {
 	}
 
 	test("Substitutable Words should return the substitution") {
-		testTitle.substitute(WordStore.find("Pack")).head.signifier should be === "PACK"
+		testTitle.substitute(WordStore.find("Pack").get).head.signifier should be === "PACK"
 	}
 
 	test("CanBeSubstituted should return true if substitution is possible") {
-		testTitle.canBeSubstituted(WordStore.find("Pack")) should be === true
+		testTitle.canBeSubstituted(WordStore.find("Pack").get) should be === true
 	}
 }
