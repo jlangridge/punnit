@@ -3,11 +3,12 @@ package io.langridge.punnit
 class Word (val signifier:String, val phonemes:List[String]) {
 
 	def rhymesWith(word: Word) :Boolean = {
-		this.lastSyllable == word.lastSyllable
+			this.lastSyllable == word.lastSyllable
 	}
 
 	def lastSyllable :List[String] = {
 		val splitOnLastVowel = phonemes.reverse.span(p => !isVowelSound(p))
+		if(splitOnLastVowel._2.isEmpty) {return splitOnLastVowel._1.reverse}
 		splitOnLastVowel._2.head :: splitOnLastVowel._1.reverse
 	}
 
@@ -25,5 +26,9 @@ class Word (val signifier:String, val phonemes:List[String]) {
 	def canBeSubstitutedFor(word: Word) :Boolean = {
 		this.syllableCount == word.syllableCount && 
 		this.rhymesWith(word)
+	}
+
+	override def toString :String = {
+		this.signifier
 	}
 }

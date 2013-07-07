@@ -4,19 +4,16 @@ import scalax.io._
 
 object Main extends App {
     
-    def readWord(line:String):Word = {
-     	val lineList = line.split(" ").toList
-        return new Word(lineList.head, lineList.tail)
-     }
+ 
+     val records = WordStore.records
 
 
-     val input:Input = Resource.fromFile("dat/mpron/cmudict0.3")
-     val records = input.lines().map(line => readWord(line))
+     val testWord = WordStore.find("Stapler").get    
+
+     val songTitles = Resource.fromFile("dat/NumberOnes").lines().map(s => new Title(s))
+
+     val matching = songTitles.filter(s => s.canBeSubstituted(testWord)).map(s => s.substitute(testWord))
      
-     val pattern = "ZYGOTE"
-     val found = records.find(r => (r.signifier matches pattern)).head
-     println(found.phonemes)
+     println(matching.map(m => m.mkString(" ")).mkString("\n"))
 
 }
-
-
