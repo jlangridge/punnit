@@ -9,11 +9,12 @@ object Main extends App {
 
      def printMatches (query: List[String]) = {
      	val words = query.map(q => WordStore.find(q).get) 
-     	val matching = songTitles.filter(s => s.canBeSubstituted(words)).map(s => s.substitute(words))
-     	println(matching.map(m => m.mkString(" ")).mkString("\n"))
+     	val matching = songTitles.filter(s => s.canBeSubstituted(words(0)))
+     	matching.foreach(m => println(m.substitute(words(0)).mkString(" ") + " (" + m + ")"))
+
      }
 
-     val selection = List("bean", "carrot", "sprout")
-
-     printMatches(selection)
+     
+     println(args.toList)
+     printMatches(args.toList)
 }

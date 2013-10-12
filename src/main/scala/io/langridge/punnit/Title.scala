@@ -2,7 +2,7 @@ package io.langridge.punnit
 
 class Title (title: String) {
 
-	def words :List[Word] = {
+	def words: List[Word] = {
 		val tokenized = title.split(" ").toList
 		tokenized.map(word => WordStore.find(word).getOrElse(new Word(word, List(""))))
 	}
@@ -17,11 +17,23 @@ class Title (title: String) {
 		words.foldLeft(false)((a, b) => a && canBeSubstituted(b))
 	}
 
+	def canBeSubstituted(words: List[Word]):Boolean = {
+		words.foldLeft(true)((a, b) => a && canBeSubstituted(b))
+	}
+
+	def anyCanBeSubstituted(words: List[Word]): Boolean = {
+		words.foldLeft(false)((a, b) => a || canBeSubstituted(b))
+	}
+
 	def substitute(word: Word) = {
 		words.map(w => w match {
 			case w if(w.canBeSubstitutedFor(word)) => word
 			case _ => w
 			})
+	}
+
+	override def toString() = {
+		title
 	}
 
 
