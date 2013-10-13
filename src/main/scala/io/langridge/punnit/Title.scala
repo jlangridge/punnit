@@ -13,13 +13,11 @@ class Title (title: String) {
 		words.exists(w => w.canBeSubstitutedFor(word))
 	}
 
-	def canBeSubstituted(words: List[Word]):Boolean = {
+
 		words.foldLeft(false)((a, b) => a && canBeSubstituted(b))
 	}
 
 	def canBeSubstituted(words: List[Word]):Boolean = {
-		words.foldLeft(true)((a, b) => a && canBeSubstituted(b))
-	}
 
 	def anyCanBeSubstituted(words: List[Word]): Boolean = {
 		words.foldLeft(false)((a, b) => a || canBeSubstituted(b))
@@ -30,6 +28,10 @@ class Title (title: String) {
 			case w if(w.canBeSubstitutedFor(word)) => word
 			case _ => w
 			})
+	}
+
+	def substituteAll(substituteWords: List[Word]) = {
+		substituteWords.map(w => substitute(w))
 	}
 
 	override def toString() = {

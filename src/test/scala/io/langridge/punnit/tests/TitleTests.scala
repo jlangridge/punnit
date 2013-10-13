@@ -29,6 +29,6 @@ class TitleTests extends FunSuite with ShouldMatchers {
 	test("AnyCanBeSubstituted should return true if any word can be substituted") {
 		val positive = List(word("Pack"), word("Mule"))
 		testTitle.anyCanBeSubstituted(positive) should be === true
-
 	}
+
 }
