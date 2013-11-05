@@ -14,3 +14,6 @@ project/plugins/project/
 
 #data files
 dat/
+
+# IDE-sepcific
+*.sublime-workspace

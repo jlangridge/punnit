@@ -28,9 +28,9 @@ class Word (val signifier:String, val phonemes:List[String]) {
 	}
 
 	def canBeSubstitutedFor(word: Word) :Boolean = {
+		this.vowels == word.vowels &&
 		this.syllableCount == word.syllableCount && 
-		this.rhymesWith(word) &&
-		this.vowels == word.vowels
+		this.rhymesWith(word) 
 	}
 
 	override def toString :String = {

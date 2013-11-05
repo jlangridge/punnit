@@ -7,8 +7,14 @@ class Title (title: String) {
 		tokenized.map(word => WordStore.find(word).getOrElse(new Word(word, List(""))))
 	}
 
-	def canBeSubstituted(word: Word) = {
+
+
+	def canBeSubstituted(word: Word) :Boolean = {
 		words.exists(w => w.canBeSubstitutedFor(word))
+	}
+
+	def canBeSubstituted(words: List[Word]):Boolean = {
+		words.foldLeft(false)((a, b) => a && canBeSubstituted(b))
 	}
 
 	def substitute(word: Word) = {

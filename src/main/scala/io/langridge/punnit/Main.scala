@@ -7,10 +7,13 @@ object Main extends App {
 
 	val songTitles = Resource.fromFile("dat/NumberOnes").lines().map(s => new Title(s))
 
-     def printMatches (word: Word) = {
-     	val matching = songTitles.filter(s => s.canBeSubstituted(word)).map(s => s.substitute(word))
+     def printMatches (query: List[String]) = {
+     	val words = query.map(q => WordStore.find(q).get) 
+     	val matching = songTitles.filter(s => s.canBeSubstituted(words)).map(s => s.substitute(words))
      	println(matching.map(m => m.mkString(" ")).mkString("\n"))
      }
 
-     printMatches(WordStore.find("kiss").get)
+     val selection = List("bean", "carrot", "sprout")
+
+     printMatches(selection)
 }
