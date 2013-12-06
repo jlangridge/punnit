@@ -15,10 +15,6 @@ class WordTests extends FunSuite with ShouldMatchers {
 
 	val testWord = word("MISSION M IH1 SH AH0 N")
 
-	test("Assert the truth"){
-		assert(true == true)
-	}
-
 	test("Create a new word") {
 		testWord.signifier should be === "MISSION"
 	}

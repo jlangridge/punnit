@@ -16,8 +16,6 @@ object WordStore {
      }
 
      def find (signifier: String) = {
-          //input.lines().find(line => line equal signifier + ".*").map(line => readWord(line))
-     	
           records.find(r => r.signifier.equalsIgnoreCase(signifier))
      }
     
