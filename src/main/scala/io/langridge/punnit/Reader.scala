@@ -8,12 +8,15 @@ class Reader {
 	def Read(signifier: String, phonemes: List[String]): List[String] = {
 		if(signifier.isEmpty) 
 			phonemes
-		else if(signifier.head.toUpper == 'A')
-			Read(signifier.tail, "AE"::phonemes)
-		else if(signifier.head.toUpper == 'O')
-			Read(signifier.tail, "AA"::phonemes)
-		else
-			Read(signifier.tail, phonemes)
+		else {
+			
+			val phoneme:String = signifier.head.toUpper match {
+				case 'A' => "AE"
+				case 'O' => "AA"
+				case _ => signifier.head.toString
+			} 
+			Read(signifier.tail, phonemes ::: List(phoneme))
+		} 		
 	}
 
 	

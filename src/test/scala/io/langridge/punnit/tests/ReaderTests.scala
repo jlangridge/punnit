@@ -4,7 +4,6 @@ import org.scalatest.FunSuite
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 
-//Very (very) basic phoneme detection - vowels only
 class ReaderTests extends FunSuite with ShouldMatchers {
 	
 	def reader = new Reader()

@@ -11,7 +11,9 @@ object WordStore {
 
 
      def readWord(line:String):Word = {
-        val lineList = line.split(" ").toList
+        val digitRegex = """\d""".r
+        val lettersOnlyLine = digitRegex.replaceAllIn(line, "");
+        val lineList = lettersOnlyLine.split(" ").toList
         return new Word(lineList.head, lineList.tail)
      }
 
