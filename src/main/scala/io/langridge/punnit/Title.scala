@@ -10,11 +10,11 @@ class Title (title: String) {
 	def canBeSubstituted(word: Word) :Boolean = {
 		words.exists(w => w.canBeSubstitutedFor(word))
 	}
-
+	def canBeSubstituted(words: List[Word]):Boolean = {
 		words.foldLeft(false)((a, b) => a && canBeSubstituted(b))
 	}
 
-	def canBeSubstituted(words: List[Word]):Boolean = {
+	
 	def anyCanBeSubstituted(words: List[Word]): Boolean = {
 		words.foldLeft(false)((a, b) => a || canBeSubstituted(b))
 	}
